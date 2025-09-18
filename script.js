@@ -1,21 +1,20 @@
 const container = document.querySelector(".container");
-/* const lightbox     = document.querySelector(".lightbox");
-const lightboxImg  = lightbox.querySelector(".lightbox-content");
-const captionText  = lightbox.querySelector(".caption");
-const closeBtn     = lightbox.querySelector(".close"); */
+const overlay = document.querySelector(".overlay");
+const overlayImg = overlay.querySelector(".overlay-content");
+const closeBtn = overlay.querySelector(".close");
 
 
 axios.get("https://lanciweb.github.io/demo/api/pictures/")
-    .then(response => {
-        const data = response.data;
+  .then(response => {
+    const data = response.data;
 
 
-        let cardsHTML = "";
+    let cardsHTML = "";
 
-        for (let i = 0; i < 6 && i < data.length; i++) {
-            const item = data[i];
+    for (let i = 0; i < 6 && i < data.length; i++) {
+      const item = data[i];
 
-            cardsHTML += `
+      cardsHTML += `
         <article>
           <img src="img/pin.svg" alt="Pin" class="pin">
           <div>
@@ -25,11 +24,30 @@ axios.get("https://lanciweb.github.io/demo/api/pictures/")
           <p>${item.date}</p>
         </article>
       `;
-        }
+    }
 
-        
-        container.innerHTML = cardsHTML;
-    })
-    .catch(error => {
-        console.error("Errore nel caricamento dei dati:", error);
-    });
+    container.innerHTML = cardsHTML;
+
+  })
+  .catch(error => {
+    console.error("Errore nel caricamento dei dati:", error);
+  });
+
+console.log(container);
+
+container.addEventListener("click", (e) => {
+  const article = e.target.closest("article");
+  if (!article) return;
+
+  const imgEl = article.querySelector("div img");
+  if (!imgEl) return;
+
+  overlay.style.display = "block";
+  overlayImg.src = imgEl.src;
+  overlayImg.alt = imgEl.alt || "";
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.style.display = "none";
+  overlayImg.src = "";
+});

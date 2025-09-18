@@ -42,14 +42,13 @@ article {
 
 article:hover {
     transform: rotate(3deg) scale(1.02);
-    /* leggera rotazione e zoom */
     cursor: pointer;
 }
 
 .pin {
     position: absolute;
     margin: auto;
-    top: -5%;
+    top: -3.5%;
     left: 44%;
     width: 3rem;
 }
@@ -70,6 +69,43 @@ article p {
     font-size: 0.9rem;
     padding: 0 1rem 1rem;
     color: #333;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right:0;
+    bottom:0;
+    left:0;
+    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.close {
+    display: block;
+    margin: auto;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay-content {
+    margin: 2rem auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 8px;
+}
+
+.close:hover {
+    color: #bbb;
 }
 
 @media (max-width: 1024px) {
