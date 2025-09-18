@@ -36,10 +36,10 @@ axios.get("https://lanciweb.github.io/demo/api/pictures/")
 console.log(container);
 
 container.addEventListener("click", (e) => {
-  const article = e.target.closest("article");
-  if (!article) return;
+  const articolo = container.querySelector("article");
+  if (!articolo) return;
 
-  const imgEl = article.querySelector("div img");
+  const imgEl = articolo.querySelector("div img");
   if (!imgEl) return;
 
   overlay.style.display = "block";
