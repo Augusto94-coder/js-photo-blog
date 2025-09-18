@@ -1,4 +1,8 @@
-const container = document.getElementById("cards-container");
+const container = document.querySelector(".container");
+/* const lightbox     = document.querySelector(".lightbox");
+const lightboxImg  = lightbox.querySelector(".lightbox-content");
+const captionText  = lightbox.querySelector(".caption");
+const closeBtn     = lightbox.querySelector(".close"); */
 
 
 axios.get("https://lanciweb.github.io/demo/api/pictures/")
