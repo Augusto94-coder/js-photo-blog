@@ -37,10 +37,10 @@ console.log(container);
 
 container.addEventListener("click", (e) => {
   const articolo = container.querySelector("article");
-  if (!articolo) return;
+  
 
   const imgEl = articolo.querySelector("div img");
-  if (!imgEl) return;
+  
 
   overlay.style.display = "block";
   overlayImg.src = imgEl.src;
@@ -50,4 +50,11 @@ container.addEventListener("click", (e) => {
 closeBtn.addEventListener("click", () => {
   overlay.style.display = "none";
   overlayImg.src = "";
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && overlay.style.display === "block") {
+    overlay.style.display = "none";
+    overlayImg.src = "";
+  }
 });
